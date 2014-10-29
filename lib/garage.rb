@@ -12,6 +12,9 @@ class Garage
     @bikes << bike
   end
 
+  def release_bike(bike)
+    @bikes.delete(bike)
+  end
 
 
 end
