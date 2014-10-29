@@ -5,6 +5,10 @@ describe 'Garage' do
   let(:bike) {Bike.new}
   let(:garage) {Garage.new}
 
+  def fill_garage(garage)
+    50.times { garage.accept_bike(bike) }
+  end
+
   it "should accept a bike" do
     expect(garage.bike_count).to eq(0)
     garage.accept_bike(bike)
@@ -19,14 +23,20 @@ describe 'Garage' do
 
   it "should know when it is full" do
     expect(garage).not_to be_full
-    50.times { garage.accept_bike(bike) }
+    fill_garage garage
     expect(garage).to be_full
   end
 
   it "should not accept a bike when it is full" do
+    fill_garage garage
+    expect( lambda { garage.accept_bike(bike) }).to raise_error(RuntimeError)
   end
 
-
+  it "should fix a bike" do
+    bike.break!
+    garage.repair!(bike)
+    expect(bike.broken?).to be false
+  end
 
 
 end

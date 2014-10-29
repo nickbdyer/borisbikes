@@ -12,6 +12,7 @@ DEFAULT_CAPACITY = 50
   end
 
   def accept_bike(bike)
+    raise 'Garage is full' if full?
     @bikes << bike
   end
 
@@ -21,6 +22,10 @@ DEFAULT_CAPACITY = 50
 
   def full?
     bike_count == @capacity
+  end
+
+  def repair!(bike)
+    bike.fix!
   end
 
 
