@@ -5,7 +5,7 @@ class Garage
   include BikeContainer
 
   def initialize(options = {})
-    @capacity = options.fetch(:capacity, capacity)
+    self.capacity = options.fetch(:capacity, capacity)
   end
 
   def repair!(bike)
