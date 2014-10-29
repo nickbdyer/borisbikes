@@ -10,9 +10,11 @@ module BikeContainer
     @capacity ||= DEFAULT_CAPACITY
   end
 
-  def capacity=(value)
-    @capacity = value
-  end
+  attr_writer :capacity
+
+  # def capacity=(value)
+  #   @capacity = value
+  # end
 
   def bike_count
     bikes.count
@@ -24,6 +26,7 @@ module BikeContainer
   end
 
   def release(bike)
+    raise "This does not exist" if !bikes.include?(bike) || bike.class != Bike
     bikes.delete(bike)
   end
 
@@ -36,4 +39,6 @@ module BikeContainer
   end
 
 end
+
+
 

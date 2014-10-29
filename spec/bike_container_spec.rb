@@ -12,15 +12,21 @@ describe BikeContainer do
   end
 
   it "should accept a bike" do
-    expect(holder.bike_count).to eq(0)
-    holder.dock(bike)
-    expect(holder.bike_count).to eq(1)
+    expect{holder.dock(bike)}.to change{holder.bike_count}.by(1)
   end
 
   it "should release a bike" do
     holder.dock(bike)
     holder.release(bike)
     expect(holder.bike_count).to eq(0)
+  end
+
+  it "should not release a bike that does not exist" do
+    expect{(holder.release(bike))}.to raise_error("This does not exist")
+  end
+
+  it "should not release anything that is not a bike" do
+    expect{(holder.release("Horse"))}.to raise_error("This does not exist")
   end
 
   it "should know when it is full" do
