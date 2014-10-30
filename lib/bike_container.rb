@@ -1,3 +1,5 @@
+require_relative 'bike'
+
 module BikeContainer
 
   DEFAULT_CAPACITY = 10
@@ -22,7 +24,7 @@ module BikeContainer
 
   def dock(bike = Bike.new)
     raise "There is no more space." if full?
-    raise "This cannot be docked" if bike.class != Bike
+    raise "This cannot be docked" unless bike.class == Bike
     bikes << bike
   end
 
@@ -47,13 +49,9 @@ module BikeContainer
     bikes.reject { |bike| !bike.broken? }
   end
 
-  def transfer_broken_bikes_to(container)
-    available_broken_bikes.each { |bike| container.bikes << bike }
+  def transfer_bikes_to(container)
+    available_bikes.each { |bike| container.dock(bike) }
   end
-
-  def transfer_bikes_to
-  end
-
 
 end
 
