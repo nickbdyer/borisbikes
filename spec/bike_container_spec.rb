@@ -4,7 +4,10 @@ class ContainerHolder; include BikeContainer; end
 class Bike; end
 
 describe BikeContainer do
-  let(:bike) { Bike.new }
+
+  
+  let(:bike) { double :bike, broken?: false, :class => Bike }
+  let(:broken_bike){ double :bike, broken?: true, :class => Bike }
   let(:holder) { ContainerHolder.new }
 
   def fill_holder(holder)
@@ -34,6 +37,10 @@ describe BikeContainer do
     expect{(holder.release)}.to change{holder.bike_count}.by(-1)
   end
 
+  it "should not dock anything that is not a bike" do
+    expect{(holder.dock("Horse"))}.to raise_error("This cannot be docked")
+  end
+
   it "should know when it is full" do
     expect(holder).not_to be_full
     fill_holder holder
@@ -46,11 +53,10 @@ describe BikeContainer do
   end
 
   it "should provide the list of available bikes" do
-    working_bike = double :bike, broken?: false 
-    broken_bike = double :bike, broken?: true
-    holder.dock(working_bike)
+    
+    holder.dock(bike)
     holder.dock(broken_bike)
-    expect(holder.available_bikes).to eq([working_bike])
+    expect(holder.available_bikes).to eq([bike])
   end
 
 
