@@ -18,6 +18,15 @@ describe BikeContainer do
     expect{holder.dock(bike)}.to change{holder.bike_count}.by(1)
   end
 
+  it "should not dock anything that is not a bike" do
+    expect{(holder.dock("Horse"))}.to raise_error("This cannot be docked")
+  end
+
+  it "should dock a bike when no argument given" do
+    expect{(holder.dock)}.to change{holder.bike_count}.by 1
+  end
+
+
   it "should release a bike" do
     holder.dock(bike)
     holder.release(bike)
@@ -37,9 +46,6 @@ describe BikeContainer do
     expect{(holder.release)}.to change{holder.bike_count}.by(-1)
   end
 
-  it "should not dock anything that is not a bike" do
-    expect{(holder.dock("Horse"))}.to raise_error("This cannot be docked")
-  end
 
   it "should know when it is full" do
     expect(holder).not_to be_full

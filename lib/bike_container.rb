@@ -20,7 +20,7 @@ module BikeContainer
     bikes.count
   end
 
-  def dock(bike)
+  def dock(bike = Bike.new)
     raise "There is no more space." if full?
     raise "This cannot be docked" if bike.class != Bike
     bikes << bike
