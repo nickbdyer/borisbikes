@@ -25,7 +25,7 @@ module BikeContainer
     bikes << bike
   end
 
-  def release(bike)
+  def release(bike = bikes.sample)
     raise "This does not exist" if !bikes.include?(bike) || bike.class != Bike
     bikes.delete(bike)
   end

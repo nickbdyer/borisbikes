@@ -1,9 +1,9 @@
 require 'bike_container'
 
 class ContainerHolder; include BikeContainer; end
+class Bike; end
 
 describe BikeContainer do
-
   let(:bike) { Bike.new }
   let(:holder) { ContainerHolder.new }
 
@@ -29,6 +29,11 @@ describe BikeContainer do
     expect{(holder.release("Horse"))}.to raise_error("This does not exist")
   end
 
+  it "should release a default(rand) bike if no argument is given" do
+    holder.dock(bike)
+    expect{(holder.release)}.to change{holder.bike_count}.by(-1)
+  end
+
   it "should know when it is full" do
     expect(holder).not_to be_full
     fill_holder holder
@@ -41,8 +46,8 @@ describe BikeContainer do
   end
 
   it "should provide the list of available bikes" do
-    working_bike, broken_bike = Bike.new, Bike.new
-    broken_bike.break!
+    working_bike = double :bike, broken?: false 
+    broken_bike = double :bike, broken?: true
     holder.dock(working_bike)
     holder.dock(broken_bike)
     expect(holder.available_bikes).to eq([working_bike])
