@@ -1,7 +1,6 @@
 require 'bike_container'
 
 class ContainerHolder; include BikeContainer; end
-class Bike; end
 
 describe BikeContainer do
 
@@ -9,6 +8,7 @@ describe BikeContainer do
   let(:bike) { double :bike, broken?: false, :class => Bike }
   let(:broken_bike){ double :bike, broken?: true, :class => Bike }
   let(:holder) { ContainerHolder.new }
+  let(:van) { ContainerHolder.new }
 
   def fill_holder(holder)
     10.times { holder.dock(bike) }
@@ -73,6 +73,11 @@ describe BikeContainer do
     holder.dock(bike)
     holder.dock(broken_bike)
     expect(holder.available_broken_bikes).to eq([broken_bike])
+  end 
+
+  it "should be able to transfer multiple broken bikes" do
+    5.times{holder.dock(broken_bike)}
+    expect{holder.transfer_broken_bikes_to(van)}.to change{van.bike_count}.by 5
   end
 
 
