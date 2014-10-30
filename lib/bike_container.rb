@@ -49,8 +49,8 @@ module BikeContainer
     bikes.reject { |bike| !bike.broken? }
   end
 
-  def transfer_bikes_to(container)
-    available_bikes.each { |bike| container.dock(bike) }
+  def transfer_bikes_to(container, bikes)
+    bikes.each { |bike| container.dock(bike) }
   end
 
 end

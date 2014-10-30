@@ -76,7 +76,7 @@ shared_examples "BikeContainer" do
     it "should be able to transfer multiple bikes" do
       5.times{holder.dock(bike)}
       5.times{expect(van).to receive(:dock).with(bike)}
-      holder.transfer_bikes_to(van)
+      holder.transfer_bikes_to(van, holder.available_bikes)
     end
 
 end

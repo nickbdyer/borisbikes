@@ -22,7 +22,7 @@ describe Garage do
   it "should transfer fixed bikes to the van" do
     10.times{garage.dock(bike)}
     10.times{expect(van).to receive(:dock).with(bike)}
-    garage.transfer_bikes_to(van)
+    garage.transfer_bikes_to(van, garage.available_bikes)
   end
 
 
