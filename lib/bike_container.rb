@@ -28,8 +28,9 @@ module BikeContainer
     bikes << bike
   end
 
-  def release(bike = bikes.sample)
+  def release(bike = available_bikes.sample)
     raise "This does not exist" if !bikes.include?(bike) || bike.class != Bike
+    raise "This bike is not available" if !available_bikes.include?(bike)
     bikes.delete(bike)
   end
 
@@ -51,6 +52,7 @@ module BikeContainer
 
   def transfer_bikes_to(container, bikes)
     bikes.each { |bike| container.dock(bike) }
+    bikes.each { |bike| bikes.delete(bike)}
   end
 
 end
