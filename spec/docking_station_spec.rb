@@ -7,8 +7,8 @@ describe DockingStation do
 
   let(:station) { DockingStation.new(:capacity => 123) }
   let(:van) { Van.new }
-  # let(:van) { Van.new }
   let(:broken_bike) {double :bike, broken?: true, :class => Bike}
+  let(:broken_bike2) {double :bike, broken?: true, :class => Bike}
 
   it "should allow setting of default capacity on initializing" do
     expect(station.capacity).to eq(123)
@@ -25,11 +25,9 @@ describe DockingStation do
     expect{station.transfer_bikes_to(van, station.available_broken_bikes)}.to raise_error(RuntimeError)
   end
 
-  xit "should stop transferring bikes to van after error" do
-    11.times{station.dock(broken_bike)}
-    expect{station.transfer_bikes_to(van, station.available_broken_bikes)}.to raise_error(RuntimeError).and change{van.bike_count}.by 10
-    # expect{station.transfer_bikes_to(van, station.available_broken_bikes)}.
-    expect(station.bike_count).to eq 1
+  it "should stop transferring bikes to van after error" do
+    station.capacity.times {station.dock(double :bike, broken?: true, :class => Bike)}
+    expect{station.transfer_bikes_to(van, station.available_broken_bikes)}.to raise_error("There is no more space.").and change{station.bike_count}.by -10
   end
 
 

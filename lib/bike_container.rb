@@ -25,7 +25,7 @@ module BikeContainer
   def dock(bike = Bike.new)
     raise "There is no more space." if full?
     raise "This cannot be docked" unless bike.class == Bike
-    bikes << bike
+    bikes << bike 
   end
 
   def release(bike = available_bikes.sample)
@@ -39,7 +39,7 @@ module BikeContainer
   end
 
   def available_bikes
-    bikes.reject { |bike| bike.broken? }
+    bikes.reject(&:broken?)
   end
 
   def empty?
@@ -47,13 +47,12 @@ module BikeContainer
   end
 
   def available_broken_bikes
-    bikes.reject { |bike| !bike.broken? }
+    bikes.select(&:broken?)
   end
 
-  def transfer_bikes_to(container, bikes)
-    bikes.each do |bike|
-      container.dock(bike)
-      self.bikes.delete(bike)
+  def transfer_bikes_to(container, bikes_array)
+    bikes_array.each do |bike|
+      self.bikes.delete(bike) if container.dock(bike) 
     end
   end
 
