@@ -42,15 +42,13 @@ shared_examples "BikeContainer" do
 
     it "should not release a broken bike" do
       holder.dock(broken_bike)
-      expect{holder.release(broken_bike)}.to raise_error(RuntimeError)
+      expect{holder.release(broken_bike)}.to raise_error(RuntimeError).and change{holder.bike_count}.by 0
     end
 
     it "should release a default(rand) bike if no argument is given" do
       holder.dock(bike)
       expect{(holder.release)}.to change{holder.bike_count}.by(-1)
     end
-
-
 
     it "should know when it is full" do
       expect(holder).not_to be_full

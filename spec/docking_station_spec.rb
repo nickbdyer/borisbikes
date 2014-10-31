@@ -20,11 +20,18 @@ describe DockingStation do
     station.transfer_bikes_to(van, station.available_broken_bikes)
   end
 
-  it "should stop transferring bikes to van if van is full" do
+  it "should raise error when transferring bikes to van if van is full" do
     11.times{station.dock(broken_bike)}
-    station.transfer_bikes_to(van, station.available_broken_bikes)
-    expect(station.available_broken_bikes.count).to eq 1
+    expect{station.transfer_bikes_to(van, station.available_broken_bikes)}.to raise_error(RuntimeError)
   end
+
+  xit "should stop transferring bikes to van after error" do
+    11.times{station.dock(broken_bike)}
+    expect{station.transfer_bikes_to(van, station.available_broken_bikes)}.to raise_error(RuntimeError).and change{van.bike_count}.by 10
+    # expect{station.transfer_bikes_to(van, station.available_broken_bikes)}.
+    expect(station.bike_count).to eq 1
+  end
+
 
 end
 

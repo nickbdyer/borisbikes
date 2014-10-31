@@ -51,8 +51,10 @@ module BikeContainer
   end
 
   def transfer_bikes_to(container, bikes)
-    bikes.each { |bike| container.dock(bike) }
-    bikes.each { |bike| bikes.delete(bike)}
+    bikes.each do |bike|
+      container.dock(bike)
+      self.bikes.delete(bike)
+    end
   end
 
 end
