@@ -32,18 +32,21 @@ describe Person do
 
     expect(old_street).to receive(:release)
 
-    person_without_bike.rent_bike_from(old_street)
+    person_without_bike.rent_bike_from(old_street, bike)
   end
 
   it 'has that bike after renting it' do
     old_street = double :docking_station
     allow(old_street).to receive(:release).and_return(:a_bike_object)
 
-    person_without_bike.rent_bike_from(old_street)
+    person_without_bike.rent_bike_from(old_street, bike)
     expect(person_without_bike).to have_bike
   end
 
   it 'can return a bike to a station' do
-  
+    old_street = double :docking_station
+    allow(old_street).to receive(:dock)
+    person_with_bike.return_bike_to(old_street)
+    expect(person_with_bike).to_not have_bike
   end
 end

@@ -16,8 +16,14 @@ class Person
     @bike = nil
   end
 
-  def rent_bike_from(station)
-    @bike = station.release
+  def rent_bike_from(station, bike)
+    @bike = station.release(bike)
   end
+
+  def return_bike_to(station)
+    station.dock(@bike)
+    self.lose_bike!
+  end
+
 
 end
