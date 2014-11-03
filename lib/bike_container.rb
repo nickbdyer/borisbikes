@@ -34,6 +34,10 @@ module BikeContainer
     bikes.delete(bike)
   end
 
+  def release_any_bike(bike)
+    bikes.delete(bike)
+  end
+
   def full?
     bike_count >= capacity
   end
@@ -51,10 +55,9 @@ module BikeContainer
   end
 
   def transfer_bikes_to(container, bikes_array)
-    bikes_array.each do |bike|
-      container.dock(bike) 
+    bikes_array.reverse_each do |bike|
+      self.release_any_bike(bike) if container.dock(bike) 
     end
-    self.bikes.delete_if{|bike| container.bikes.include? bike} 
   end
 
 end

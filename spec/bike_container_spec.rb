@@ -5,7 +5,7 @@ shared_examples "BikeContainer" do
   # class ContainerHolder; include BikeContainer; end
 
     let(:holder)      { described_class.new }
-    let(:van)         { double :van }
+    let(:van)         { double :van, bikes: [] }
     let(:bike)        { double :bike, broken?: false, :class => Bike }
     let(:broken_bike) { double :bike, broken?: true, :class => Bike }
     
@@ -79,8 +79,8 @@ shared_examples "BikeContainer" do
     end 
 
     it "should be able to transfer multiple bikes" do
-      5.times{holder.dock(bike)}
-      5.times{expect(van).to receive(:dock).with(bike)}
+      5.times{holder.dock(Bike.new)}
+      expect(van).to receive(:dock).exactly(5).times
       holder.transfer_bikes_to(van, holder.available_bikes)
     end
 
