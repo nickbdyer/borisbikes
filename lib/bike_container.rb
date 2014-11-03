@@ -52,8 +52,9 @@ module BikeContainer
 
   def transfer_bikes_to(container, bikes_array)
     bikes_array.each do |bike|
-      self.bikes.delete(bike) if container.dock(bike) 
+      container.dock(bike) 
     end
+    self.bikes.delete_if{|bike| container.bikes.include? bike} 
   end
 
 end
