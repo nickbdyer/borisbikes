@@ -38,7 +38,7 @@ In discussing the domain model amoungst our group, we ended up with 6 classes.
 * [x] Van
 * [x] Garage
 * [x] Docking Station
-* [] Rental
+* [ ] Rental
 
 Rental was not completed after a presentation to the group, it appeared above the scope of the project, and although made sense in comparison to the actual Boris Bikes system, it was marked as item for future development.
 
