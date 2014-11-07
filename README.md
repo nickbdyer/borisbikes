@@ -31,7 +31,7 @@ Domain model:
 
 In discussing the domain model amoungst our group, we ended up with 6 classes. 
 
-* [x] = Implemented
+> * [x] = Implemented
 
 * [x] Bike
 * [x] Person
