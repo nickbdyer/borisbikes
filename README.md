@@ -1,8 +1,8 @@
-Boris Bikes
-===========
+#Boris Bikes
 
 Day 2 at Makers Academy
 
+###The Problem
 As an introduction to OOP and OOD we were instructed to create a simple system to manage Boris Bikes. The aim was to ensure that the system would:
 
 - Keep track of a number of docking stations
@@ -12,9 +12,7 @@ As an introduction to OOP and OOD we were instructed to create a simple system t
 - A garage will be able to fix bikes
 - A van will transport bikes between the garage and docking station. 
 
-Stages:
--------
-
+### Stages
 1. Building a domain model
 2. Setting up the project & building the bike
 3. Refactoring
@@ -25,9 +23,9 @@ Stages:
 
 There were five other people in our team when discussing the domain model. Chris, Ming, Alan, Pavel, Rich
 
-Domain model:
+###Domain Model
 
->We are building a system that manages **bikes** that can be *rented* by **users** from **docking stations** and *returned* there at the end of the **rental**. The **bikes** can *break* while being used, in which case they will not be *available* for **rental** after they are returned. There is a **garage** that can *fix* *broken* **bikes**. A **van** is used to *move* broken bikes from the **stations** to the **garage**. It can also be used to take fixed **bikes** back to the **station(s)**. The **van**, all **stations** and the **garage** have fixed *capacity*, so they cannot take more **bikes** that they can hold.
+We are building a system that manages **bikes** that can be *rented* by **users** from **docking stations** and *returned* there at the end of the **rental**. The **bikes** can *break* while being used, in which case they will not be *available* for **rental** after they are returned. There is a **garage** that can *fix* *broken* **bikes**. A **van** is used to *move* broken bikes from the **stations** to the **garage**. It can also be used to take fixed **bikes** back to the **station(s)**. The **van**, all **stations** and the **garage** have fixed *capacity*, so they cannot take more **bikes** that they can hold.
 
 In discussing the domain model amoungst our group, we ended up with 6 classes. 
 
@@ -42,7 +40,7 @@ In discussing the domain model amoungst our group, we ended up with 6 classes.
 
 Rental was not completed after a presentation to the group, it appeared above the scope of the project, and although made sense in comparison to the actual Boris Bikes system, it was marked as item for future development.
 
-CRC Card Examples from our Group.
+### Example CRC Cards
 
 | Class         | Bike                     |
 |:------------- | :------------------------|
@@ -62,4 +60,9 @@ CRC Card Examples from our Group.
 | Return              |                    |
 | Break               |
 
+### Running the Program
+```sh
+$ irb
+$ require ('./openall.rb')
+```
 
