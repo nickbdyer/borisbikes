@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'person'
 
 describe Person do
@@ -8,7 +9,6 @@ describe Person do
 
   it 'has no bike when born' do
     expect(person_without_bike).not_to have_bike
-    # expect(person_without_bike.has_bike?).to be false
   end
 
   it 'can have a bike' do
@@ -16,13 +16,13 @@ describe Person do
   end
 
   it 'can break a bike while having an accident' do
-    expect(bike).to receive(:break!).and_return(bike)
+    expect(bike).to receive(:break).and_return(bike)
 
-    person_with_bike.fall_down!
+    person_with_bike.fall_down
   end
 
   it 'can lose the bike' do
-    person_with_bike.lose_bike!
+    person_with_bike.lose_bike
 
     expect(person_with_bike).not_to have_bike
   end

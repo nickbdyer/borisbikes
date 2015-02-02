@@ -8,11 +8,11 @@ class Person
     !@bike.nil?
   end
 
-  def fall_down!
-    @bike.break!
+  def fall_down
+    @bike.break
   end
 
-  def lose_bike!
+  def lose_bike
     @bike = nil
   end
 
@@ -22,7 +22,7 @@ class Person
 
   def return_bike_to(station)
     station.dock(@bike)
-    self.lose_bike!
+    self.lose_bike
   end
 
 

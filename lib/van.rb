@@ -2,10 +2,10 @@ require_relative 'bike_container'
 
 class Van
 
-include BikeContainer 
+  include BikeContainer 
 
-def initialize(options = {})
-  self.capacity = options.fetch(:capacity, capacity)
-end
+  def initialize(options = {})
+    self.capacity = options.fetch(:capacity, capacity)
+  end
 
 end
