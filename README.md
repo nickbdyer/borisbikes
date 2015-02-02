@@ -1,6 +1,9 @@
 Boris Bikes
 ===========
 
+[![Code
+Climate](https://codeclimate.com/github/nickbdyer/borisbikes/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/borisbikes)
+
 Day 2 at Makers Academy
 
 As an introduction to OOP and OOD we were instructed to create a simple system to manage Boris Bikes. The aim was to ensure that the system would:
