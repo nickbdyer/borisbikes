@@ -1,7 +1,7 @@
 #Boris Bikes
 
 [![Code
-Climate](https://codeclimate.com/github/nickbdyer/borisbikes/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/borisbikes)
+Climate](https://codeclimate.com/github/nickbdyer/borisbikes/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/borisbikes) [![Test Coverage](https://codeclimate.com/github/nickbdyer/borisbikes/badges/coverage.svg)](https://codeclimate.com/github/nickbdyer/borisbikes)
 
 Day 2 at Makers Academy
 
