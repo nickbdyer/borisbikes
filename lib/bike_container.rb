@@ -34,10 +34,6 @@ module BikeContainer
     bikes.delete(bike)
   end
 
-  def release_any_bike(bike)
-    bikes.delete(bike)
-  end
-
   def full?
     bike_count >= capacity
   end
