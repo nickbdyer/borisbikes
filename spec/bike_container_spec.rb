@@ -3,8 +3,6 @@ require 'bike_container'
 
 shared_examples "BikeContainer" do
 
-  # class ContainerHolder; include BikeContainer; end
-
     let(:holder)      { described_class.new }
     let(:van)         { double :van, bikes: [] }
     let(:bike)        { double :bike, broken?: false, :class => Bike }

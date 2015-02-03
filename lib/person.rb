@@ -5,7 +5,7 @@ class Person
   end
 
   def has_bike?
-    !@bike.nil?
+    @bike
   end
 
   def fall_down

@@ -8,7 +8,7 @@ class Garage
     self.capacity = options.fetch(:capacity, capacity)
   end
 
-  def repair(bikes)
+  def repair
     bikes.each { |bike| bike.fix }
   end
 

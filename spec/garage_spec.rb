@@ -17,7 +17,7 @@ describe Garage do
   it "should fix bikes" do
     garage.dock(broken_bike)
     expect(broken_bike).to receive(:fix)
-    garage.repair(garage.bikes)
+    garage.repair
   end
 
   it "should transfer fixed bikes to the van" do
